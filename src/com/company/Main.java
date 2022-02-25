@@ -58,7 +58,8 @@ public class Main {
             System.out.println("\n\nWhat do you wish to do next?");
             System.out.println("Press 1: See all cards in deck");
             System.out.println("Press 2: Shuffle deck");
-            System.out.println("Press 3: To end");
+            System.out.println("Press 3: Get a new deck");
+            System.out.println("Press 4: To end");
             String choice = sc.next();
             switch(choice){
                 case "1":
@@ -68,6 +69,9 @@ public class Main {
                     shuffleDeck();
                     break;
                 case "3":
+                    createAllCards();
+                    break;
+                case "4":
                     System.out.println("\n\nThank you for using Lindinger's Virtual Card Program.");
                     run = false;
                     break;
