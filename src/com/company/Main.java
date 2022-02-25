@@ -45,10 +45,21 @@ public class Main {
         }
     }
 
+    public String pickRandomCard(){
+        int random = (int) (Math.random() * 52);
+        String randomCard = deck[random];
+        return randomCard;
+    }
+
+    public String pickTopCard(){
+        String topCard = deck[0];
+        return topCard;
+    }
+
     public void userInterface(){
         createAllCards();
         Scanner sc = new Scanner(System.in);
-        System.out.println("Welcome to your virtual deck of cards.");
+        System.out.println("\n\n\nWelcome to your virtual deck of cards.");
         System.out.println("Press any key to continue!");
         String next = sc.nextLine();
 
@@ -59,9 +70,11 @@ public class Main {
             System.out.println("Press 1: See all cards in deck");
             System.out.println("Press 2: Shuffle deck");
             System.out.println("Press 3: Get a new deck");
-            System.out.println("Press 4: To end");
+            System.out.println("Press 4: Pick a card from a random location in the deck");
+            System.out.println("Press 5: Pick top card of the deck");
+            System.out.println("Press 9: To end");
             String choice = sc.next();
-            switch(choice){
+            switch(choice) {
                 case "1":
                     outputCards();
                     break;
@@ -72,6 +85,12 @@ public class Main {
                     createAllCards();
                     break;
                 case "4":
+                    System.out.println("The chosen card is: " + pickRandomCard());
+                    break;
+                case "5":
+                    System.out.println("The chosen card is: " + pickTopCard());
+                    break;
+                case "9":
                     System.out.println("\n\nThank you for using Lindinger's Virtual Card Program.");
                     run = false;
                     break;
