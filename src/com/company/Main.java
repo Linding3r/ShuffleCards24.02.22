@@ -3,15 +3,15 @@ package com.company;
 import java.util.Scanner;
 
 public class Main {
-
+    int nextCard = 0;
     String [] deck = new String[52];
 
     public void createAllCards(){
         String[] colour = new String[4];
-        colour[0] = "Hearts";
-        colour[1] = "Spades";
-        colour[2] = "Clubs";
-        colour[3] = "Diamonds";
+        colour[0] = "Spades";
+        colour[1] = "Clubs";
+        colour[2] = "\u001B[31mHearts\u001B[0m";
+        colour[3] = "\u001B[31mDiamonds\u001B[0m";
 
         String[] number = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jacks", "Queen", "King"};
 
@@ -52,9 +52,15 @@ public class Main {
     }
 
     public String pickTopCard(){
-        String topCard = deck[0];
+        String topCard = deck[nextCard];
         return topCard;
     }
+
+    public int nextCardInDeck(){
+        nextCard++;
+        return nextCard;
+    }
+
 
     public void userInterface(){
         createAllCards();
@@ -85,10 +91,28 @@ public class Main {
                     createAllCards();
                     break;
                 case "4":
-                    System.out.println("The chosen card is: " + pickRandomCard());
+                    System.out.println("\nThe chosen card is: " + pickRandomCard());
                     break;
                 case "5":
-                    System.out.println("The chosen card is: " + pickTopCard());
+                    System.out.println("\n" + pickTopCard());
+                    boolean getOut = true;
+                    while (getOut){
+                        System.out.println("\nPress 1:  pick the next card");
+                        System.out.println("Press 2:  go back to main menu");
+                        String choice1 = sc.next();
+                        switch(choice1){
+                            case "1":
+                                nextCardInDeck();
+                                System.out.println(pickTopCard());
+                                break;
+                            case "2":
+                                getOut = false;
+                                break;
+                            default:
+                                System.out.println("Invalid input!");
+                                System.out.println("Please try again");
+                            }
+                        }
                     break;
                 case "9":
                     System.out.println("\n\nThank you for using Lindinger's Virtual Card Program.");
