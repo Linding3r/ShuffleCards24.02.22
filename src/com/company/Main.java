@@ -39,8 +39,8 @@ public class Main {
 
     public void shuffleDeck() {
         for (int x = 0; x < 100; x++) {
-            int randomCardA = (int) (Math.random() * 51 + 1);
-            int randomCardB = (int) (Math.random() * 51 + 1);
+            int randomCardA = (int) (Math.random() * 52);
+            int randomCardB = (int) (Math.random() * 52);
             shuffleTwoCards(randomCardA,randomCardB);
         }
     }
