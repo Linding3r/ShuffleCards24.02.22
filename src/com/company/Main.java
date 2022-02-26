@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Main {
   int nextCard = 0;
   String[] deck = new String[52];
+  Scanner sc = new Scanner(System.in);
 
   public void createAllCards() {
     String[] colour = new String[4];
@@ -57,14 +58,29 @@ public class Main {
     return topCard;
   }
 
-  public void nextCardInDeck() {
-    nextCard++;
+  public void pickTopCardGame(){
+    boolean getOut = true;
+    while (getOut) {
+      System.out.println("\nPress 1:  pick the next card");
+      System.out.println("Press 2:  go back to main menu");
+      String choice1 = sc.next();
+      switch (choice1) {
+        case "1":
+          nextCard++;
+          System.out.println(pickTopCard());
+          break;
+        case "2":
+          getOut = false;
+          break;
+        default:
+          System.out.println("Invalid input!");
+          System.out.println("Please try again");
+      }
+    }
   }
-
 
   public void userInterface() {
     createAllCards();
-    Scanner sc = new Scanner(System.in);
     System.out.println("\n\n\nWelcome to your virtual deck of cards.");
     System.out.println("Press any key to continue!");
     String next = sc.nextLine();
@@ -89,24 +105,7 @@ public class Main {
           break;
         case "3":
           System.out.println("\n" + pickTopCard());
-          boolean getOut = true;
-          while (getOut) {
-            System.out.println("\nPress 1:  pick the next card");
-            System.out.println("Press 2:  go back to main menu");
-            String choice1 = sc.next();
-            switch (choice1) {
-              case "1":
-                nextCardInDeck();
-                System.out.println(pickTopCard());
-                break;
-              case "2":
-                getOut = false;
-                break;
-              default:
-                System.out.println("Invalid input!");
-                System.out.println("Please try again");
-            }
-          }
+          pickTopCardGame();
           break;
         case "4":
           System.out.println("\nThe chosen card is: " + pickRandomCard());
