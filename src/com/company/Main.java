@@ -66,7 +66,11 @@ public class Main {
       String choice1 = sc.next();
       switch (choice1) {
         case "1":
-          nextCard++;
+          if (nextCard == 51){
+            nextCard = 0;
+          }else {
+            nextCard++;
+          }
           System.out.println(pickTopCard());
           break;
         case "2":
